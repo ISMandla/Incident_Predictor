@@ -1,0 +1,10 @@
+artifact_location: file:///home/ism/incident_predictor/incident_predictor_module3/ml-models/mlruns/654982919845759536/models/m-8db8bb74b2e7447bbf7c5be51ba9382a/artifacts
+creation_timestamp: 1752571140914
+experiment_id: '654982919845759536'
+last_updated_timestamp: 1752571145279
+model_id: m-8db8bb74b2e7447bbf7c5be51ba9382a
+model_type: null
+name: model
+source_run_id: 6f4ea5aee1204a83bbe07e89f0458f55
+status: 2
+status_message: null

@@ -1,0 +1,6 @@
+artifact_location: file:///home/ism/incident_predictor/incident_predictor_module3/ml-models/mlruns/654982919845759536
+creation_time: 1752571140599
+experiment_id: '654982919845759536'
+last_update_time: 1752571140599
+lifecycle_stage: active
+name: Anomaly Detection

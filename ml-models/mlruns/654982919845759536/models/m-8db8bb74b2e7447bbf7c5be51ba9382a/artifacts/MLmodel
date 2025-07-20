@@ -1,0 +1,22 @@
+artifact_path: file:///home/ism/incident_predictor/incident_predictor_module3/ml-models/mlruns/654982919845759536/models/m-8db8bb74b2e7447bbf7c5be51ba9382a/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.0
+mlflow_version: 3.1.1
+model_id: m-8db8bb74b2e7447bbf7c5be51ba9382a
+model_size_bytes: 122231
+model_uuid: m-8db8bb74b2e7447bbf7c5be51ba9382a
+prompts: null
+run_id: 6f4ea5aee1204a83bbe07e89f0458f55
+utc_time_created: '2025-07-15 09:19:00.925721'

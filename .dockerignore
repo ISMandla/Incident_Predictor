@@ -1,0 +1,25 @@
+# Ignore virtual environments
+venv/
+**/venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore node_modules
+node_modules/
+**/node_modules/
+
+# Ignore Git and logs
+.git/
+*.log
+
+# Ignore dotenv files
+.env
+.env.*
+
+# Ignore local Docker-related files
+docker-compose.override.yml
+*.swp

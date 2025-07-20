@@ -1,0 +1,14 @@
+artifact_uri: file:///home/ism/incident_predictor/incident_predictor_module3/ml-models/mlruns/654982919845759536/6f4ea5aee1204a83bbe07e89f0458f55/artifacts
+end_time: 1752571145284
+entry_point_name: ''
+experiment_id: '654982919845759536'
+lifecycle_stage: active
+run_id: 6f4ea5aee1204a83bbe07e89f0458f55
+run_name: delicate-stoat-895
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752571140748
+status: 3
+tags: []
+user_id: ism

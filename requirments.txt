@@ -1,0 +1,12 @@
+psutil
+kafka-python
+psycopg2-binary
+pymongo
+pandas
+scikit-learn
+joblib
+mlflow
+fastapi
+uvicorn
+pydantic
+psycopg2-binary schedule yagmail

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/ism/incident_predictor/incident_predictor_module3/ml-models/mlruns/654982919845759536/30ec4504c0fd49df8c61a69ceb422a5a/artifacts
+end_time: 1752591781306
+entry_point_name: ''
+experiment_id: '654982919845759536'
+lifecycle_stage: active
+run_id: 30ec4504c0fd49df8c61a69ceb422a5a
+run_name: nebulous-pig-674
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752591775470
+status: 3
+tags: []
+user_id: ism
