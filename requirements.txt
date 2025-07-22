@@ -9,4 +9,6 @@ mlflow
 fastapi
 uvicorn
 pydantic
-psycopg2-binary schedule yagmail
+psycopg2-binary
+schedule
+yagmail

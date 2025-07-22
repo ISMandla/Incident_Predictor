@@ -8,16 +8,16 @@ from threading import Thread
 from sqlalchemy import create_engine
 
 # --- Load Models ---
-log_model = joblib.load("log_classifier.pkl")
-tfidf = joblib.load("tfidf_vectorizer.pkl")
-anomaly_model = joblib.load("isolation_forest_model.pkl")
+log_model = joblib.load("ml-models/log_classifier.pkl")
+tfidf = joblib.load("ml-models/tfidf_vectorizer.pkl")
+anomaly_model = joblib.load("ml-models/isolation_forest_model.pkl")
 
 # --- PostgreSQL Setup ---
 pg_conn = psycopg2.connect(
     dbname="incident_db",
     user="postgres",
     password="password",
-    host="localhost",
+    host="incident_postgres",
     port="5432"
 )
 pg_cursor = pg_conn.cursor()
@@ -33,12 +33,12 @@ CREATE TABLE IF NOT EXISTS incident_predictions (
 pg_conn.commit()
 
 # SQLAlchemy engine for pandas
-engine = create_engine("postgresql+psycopg2://postgres:password@localhost:5432/incident_db")
+engine = create_engine("postgresql+psycopg2://postgres:password@incident_postgres:5432/incident_db")
 
 # --- Metric Anomaly Detection Thread ---
 def anomaly_loop():
     last_checked_id = 0
-    count = 0
+
     while True:
         try:
             query = f"SELECT id, cpu, memory, disk FROM system_metrics WHERE id > {last_checked_id} ORDER BY id ASC;"
@@ -56,8 +56,7 @@ def anomaly_loop():
                         "INSERT INTO incident_predictions (source, original, prediction) VALUES (%s, %s, %s)",
                         ("metric", snapshot, label)
                     )
-                    count += 1
-                    print(count)
+
                 pg_conn.commit()
                 last_checked_id = df['id'].max()
             else:
@@ -73,7 +72,7 @@ def log_loop():
     try:
         consumer = KafkaConsumer(
             'logs',
-            bootstrap_servers='localhost:9092',
+            bootstrap_servers='kafka:9092',
             value_deserializer=lambda m: json.loads(m.decode('utf-8'))
         )
         for message in consumer:

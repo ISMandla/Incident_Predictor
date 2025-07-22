@@ -11,13 +11,13 @@ conn = psycopg2.connect(
     dbname="incident_db",
     user="postgres",
     password="password",
-    host="localhost",
+    host="incident_postgres",
     port="5432"
 )
 cursor = conn.cursor()
 
 # Set up email sender using yagmail (uses Gmail)
-yag = yagmail.SMTP("ishaan.mandla@gmail.com", "ziyf traf hrow ydbi")
+yag = yagmail.SMTP("", "") # <-- Enter your email and password respectively.
 
 # Store the last seen ID
 last_seen_id = 0
@@ -41,18 +41,19 @@ def check_for_alerts():
         last_seen_id = id
 
 def send_alert(message):
-    print("🚨 Sending alert:", message)
+    print("Sending alert:", message)
     if not TEST_MODE:
         yag.send(
-            to="ishaan.mandla@gmail.com",
-            subject="🚨 Incident Alert!",
+            to="", # <-- Enter the email of the reciever.
+
+            subject="Incident Alert!",
             contents=message
         )
 
 # Run check every 10 seconds
 schedule.every(10).seconds.do(check_for_alerts)
 
-print("📡 Alert engine started.")
+print("Alert engine started.")
 while True:
     schedule.run_pending()
     time.sleep(1)

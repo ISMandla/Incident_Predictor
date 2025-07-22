@@ -41,19 +41,28 @@ services:
       - "27017:27017"
     volumes:
       - mongodata:/data/db
+  model_trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+    container_name: model_trainer
+    command: sh -c "python ml-models/train_anomaly_detector.py && python ml-models/train_log_classifier.py"
+    volumes:
+      - .:/app
 
   fastapi:
     build:
       context: .
       dockerfile: Dockerfile.fastapi
     container_name: fastapi_backend
+    command: uvicorn FastAPI_Backend.main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     depends_on:
       - kafka
       - postgres
     volumes:
-      - ./FastAPI_Backend:/app
+      - .:/app
 
   react:
     build:
@@ -61,7 +70,7 @@ services:
       dockerfile: Dockerfile.reactor
     container_name: react_dashboard
     ports:
-      - "3000:3000"
+      - "3000:80"
     depends_on:
       - fastapi
 
@@ -116,7 +125,7 @@ services:
       context: .
       dockerfile: Dockerfile.fastapi
     container_name: incident_predictor
-    command: python ml-models/run_incident_predictor.py
+    command: sh -c "python ml-models/run_incident_predictor.py && python ml-models/run_anomaly_detection.py"
     depends_on:
       - kafka
       - postgres

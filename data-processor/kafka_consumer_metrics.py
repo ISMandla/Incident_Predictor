@@ -7,7 +7,7 @@ conn = psycopg2.connect(
     dbname="incident_db",
     user="postgres",
     password="password",
-    host="localhost",
+    host="incident_postgres",
     port="5432"
 )
 cursor = conn.cursor()
@@ -25,7 +25,7 @@ conn.commit()
 
 consumer = KafkaConsumer(
     'system_metrics',
-    bootstrap_servers='localhost:9092',
+    bootstrap_servers='kafka:9092',
     value_deserializer=lambda m: json.loads(m.decode('utf-8'))
 )
 

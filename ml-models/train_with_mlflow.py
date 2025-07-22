@@ -3,8 +3,17 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 import mlflow
 import mlflow.sklearn
+import psycopg2
 
-df = pd.read_csv("system_metrics_sample.csv")
+conn = psycopg2.connect(
+    dbname="incident_db",
+    user="postgres",
+    password="password",
+    host="incident_postgres",
+    port="5432"
+)
+
+query = "SELECT cpu, memory, disk FROM system_metrics"
 X = df[['cpu', 'memory', 'disk']]
 
 mlflow.set_experiment("Anomaly Detection")

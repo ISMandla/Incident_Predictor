@@ -1,7 +1,0 @@
-log,label
-INFO: User logged in,info
-WARNING: High memory usage detected,warning
-ERROR: Database connection failed,error
-INFO: Scheduled backup completed,info
-ERROR: Disk read error,error
-WARNING: CPU spike detected,warning

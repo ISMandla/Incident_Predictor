@@ -15,9 +15,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-anomaly_model = joblib.load("../ml-models/isolation_forest_model.pkl")
-log_model = joblib.load("../ml-models/log_classifier.pkl")
-tfidf = joblib.load("../ml-models/tfidf_vectorizer.pkl")
+anomaly_model = joblib.load("ml-models/isolation_forest_model.pkl")
+log_model = joblib.load("ml-models/log_classifier.pkl")
+tfidf = joblib.load("ml-models/tfidf_vectorizer.pkl")
 
 class MetricInput(BaseModel):
     cpu: float

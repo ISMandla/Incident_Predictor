@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+import psycopg2
 import time
 from sqlalchemy import create_engine
 
@@ -7,7 +8,7 @@ from sqlalchemy import create_engine
 model = joblib.load("isolation_forest_model.pkl")
 
 # Create SQLAlchemy engine
-engine = create_engine("postgresql+psycopg2://postgres:password@localhost:5432/incident_db")
+engine = create_engine("postgresql+psycopg2://postgres:password@incident_postgres:5432/incident_db")
 
 last_checked_id = 0
 
